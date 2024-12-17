@@ -127,7 +127,7 @@ jobs:
           fi
       - name: "Print plan"
         run: |
-          export PLAN="${{ needs.plan.outputs.manifest }}"
+          export PLAN="$(cat $BUILD_MANIFEST_NAME)"
           export APP_VERSION="$(echo "$PLAN" | jq -r '.releases[0].app_version')"
           echo "APP_VERSION=$APP_VERSION"
           envsubst "$PLAN" > manifest.yml
