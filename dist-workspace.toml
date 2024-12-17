@@ -11,8 +11,6 @@ ci = "github"
 installers = []
 # Target platforms to build apps for (Rust target-triple syntax)
 targets = ["aarch64-apple-darwin", "aarch64-unknown-linux-gnu", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
-# Plan jobs to run in CI
-plan-jobs = ["./generate-manifest"]
 # Which actions to run on pull requests
 pr-run-mode = "upload"
 # Extra static files to include in each App (path relative to this Cargo.toml's dir)
