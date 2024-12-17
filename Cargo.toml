@@ -15,5 +15,3 @@ inherits = "release"
 lto = "thin"
 
 [dist]
-include = ["manifest.yml"]
-plan-jobs = ["./generate-manifest"]
