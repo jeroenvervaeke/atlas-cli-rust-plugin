@@ -16,10 +16,9 @@ jobs:
       env:
         PLAN: ${{ inputs.plan }}
       run: |
-        export VERSION="$(echo "$PLAN" | jq -r '.releases[0].app_version')"
-        export GITHUB_REPOSITORY_OWNER="$(echo "$PLAN" | jq -r '.releases[0].hosting.github.owner')"
-        export GITHUB_REPOSITORY_NAME="$(echo "$PLAN" | jq -r '.releases[0].hosting.github.repo')"
-        echo "VERSION=$VERSION"
+        export VERSION=${GITHUB_REF#refs/tags/v}
+        export GITHUB_REPOSITORY_NAME="${{ github.event.repository.name }}"
+        export GITHUB_REPOSITORY_OWNER="${{ github.repository_owner }}"
         cat manifest.template.yml | envsubst > manifest.yml
         echo "manifest:"
         cat manifest.yml
