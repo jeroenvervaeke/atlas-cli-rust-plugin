@@ -1,0 +1,29 @@
+name: Generate manifest
+
+on:
+  workflow_call:
+    inputs:
+      plan:
+        required: true
+        type: string
+
+jobs:
+  generate_manifest:
+    runs-on: "ubuntu-20.04"
+    steps:
+    - uses: actions/checkout@v4
+    - name: Print plan
+      env:
+        PLAN: ${{ inputs.plan }}
+      run: |
+        export APP_VERSION="$(echo "$PLAN" | jq -r '.releases[0].app_version')"
+        echo "APP_VERSION=$APP_VERSION"
+        envsubst "$PLAN" > manifest.yml
+        echo "manifest:"
+        cat manifest.yml
+    - name: "Upload artifacts"
+      uses: actions/upload-artifact@v4
+      with:
+        name: artifacts-manifest
+        path: |
+          manifest.yml

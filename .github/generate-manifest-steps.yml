@@ -1,9 +1,0 @@
-- name: Print plan
-  env:
-    PLAN: ${{ needs.plan.outputs.manifest }}
-  run: |
-    export APP_VERSION="$(echo "$PLAN" | jq -r '.releases[0].app_version')"
-    echo "APP_VERSION=$APP_VERSION"
-    envsubst "$PLAN" > manifest.yml
-    echo "manifest:"
-    cat manifest.yml
