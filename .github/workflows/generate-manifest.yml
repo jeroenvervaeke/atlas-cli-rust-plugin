@@ -2,19 +2,13 @@ name: Generate manifest
 
 on:
   workflow_call:
-    inputs:
-      plan:
-        required: true
-        type: string
 
 jobs:
   generate_manifest:
     runs-on: "ubuntu-20.04"
     steps:
     - uses: actions/checkout@v4
-    - name: Print plan
-      env:
-        PLAN: ${{ inputs.plan }}
+    - name: Generate manifest
       run: |
         export VERSION=${GITHUB_REF#refs/tags/v}
         export GITHUB_REPOSITORY_NAME="${{ github.event.repository.name }}"
