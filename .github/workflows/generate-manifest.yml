@@ -16,9 +16,11 @@ jobs:
       env:
         PLAN: ${{ inputs.plan }}
       run: |
-        export APP_VERSION="$(echo "$PLAN" | jq -r '.releases[0].app_version')"
-        echo "APP_VERSION=$APP_VERSION"
-        echo "$PLAN" | envsubst > manifest.yml
+        export VERSION="$(echo "$PLAN" | jq -r '.releases[0].app_version')"
+        export GITHUB_REPOSITORY_OWNER="$(echo "$PLAN" | jq -r '.releases[0].hosting.github.owner')"
+        export GITHUB_REPOSITORY_NAME="$(echo "$PLAN" | jq -r '.releases[0].hosting.github.repo')"
+        echo "VERSION=$VERSION"
+        cat manifest.template.yml | envsubst > manifest.yml
         echo "manifest:"
         cat manifest.yml
     - name: "Upload artifacts"
