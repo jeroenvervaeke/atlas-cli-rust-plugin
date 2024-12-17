@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Print plan
         run: |
-          export APP_VERSION="${echo "$PLAN" | jq -r '.releases[0].app_version'}"
+          export APP_VERSION="$(echo "$PLAN" | jq -r '.releases[0].app_version')"
           echo "APP_VERSION=$APP_VERSION"
           envsubst < manifest.template.yml > manifest.yml
           echo "manifest:"
