@@ -18,7 +18,7 @@ jobs:
       run: |
         export APP_VERSION="$(echo "$PLAN" | jq -r '.releases[0].app_version')"
         echo "APP_VERSION=$APP_VERSION"
-        envsubst "$PLAN" > manifest.yml
+        echo "$PLAN" | envsubst > manifest.yml
         echo "manifest:"
         cat manifest.yml
     - name: "Upload artifacts"
