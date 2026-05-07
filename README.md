@@ -1,6 +1,4 @@
 # Atlas CLI Rust Plugin Example
-> Forked from https://github.com/jeroenvervaeke/atlas-cli-rust-plugin
-
 This repository is a template for an example plugin in rust for the [Atlas CLI](https://github.com/Atlas-CLI/Atlas-CLI).
 
 For more information on how Atlas CLI plugins work, please see the [Atlas CLI plugin ocumentation](https://github.com/mongodb/atlas-cli-plugin-example/blob/master/README.md).
