@@ -6,7 +6,7 @@ repository = "https://github.com/jeroenvervaeke/atlas-cli-rust-plugin"
 
 [dependencies]
 anyhow = "1.0.102"
-clap = { version = "4.5.16", features = ["derive"] }
+clap = { version = "4.6.1", features = ["derive"] }
 dialoguer = "0.12.0"
 
 # The profile that 'dist' will build with
